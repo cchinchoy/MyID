@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     borderRadius: 25,
-    backgroundColor: "#000000c0",
+    backgroundColor: "#000000",
+
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 15,
@@ -89,7 +90,13 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginBottom: 100,
   },
-
+  imagebutton: {
+    height: "100%",
+    aspectRatio: 1,
+    resizeMode: "contain",
+    margin: 15,
+    borderRadius: 999,
+  },
   footer: {
     position: "absolute",
     bottom: 50,

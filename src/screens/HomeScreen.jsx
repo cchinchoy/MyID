@@ -5,9 +5,9 @@ import { ImageBackground, Text, SafeAreaView, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import styles from "../utils/styles";
-import LinkCardComponent from "../components/link-card-component";
-import ProfilePic from "../components/ProfilePic";
-
+// import LinkCardComponent from "../components/link-card-component";
+// import ProfilePic from "../components/ProfilePic";
+import { LinkCardComponent, ProfilePic } from "../components";
 const background = {
   uri: "https://images.pexels.com/photos/3873913/pexels-photo-3873913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 };
