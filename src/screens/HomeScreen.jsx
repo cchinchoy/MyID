@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { useIsFocused } from "@react-navigation/native";
 import { ImageBackground, Text, SafeAreaView, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { brands } from "../components";
 import styles from "../utils/styles";
 // import LinkCardComponent from "../components/link-card-component";
 // import ProfilePic from "../components/ProfilePic";
@@ -45,12 +45,12 @@ const HomeScreen = () => {
         </View>
         <View style={styles.spacer} />
         <View style={styles.btncontainer}>
-          <LinkCardComponent />
-          <LinkCardComponent />
-          <LinkCardComponent />
-          <LinkCardComponent />
-          <LinkCardComponent />
-          <LinkCardComponent />
+          <LinkCardComponent logo={brands.youtube} />
+          <LinkCardComponent logo={brands.linkedin} />
+          <LinkCardComponent logo={brands.facebook} />
+          <LinkCardComponent logo={brands.twitter} />
+          <LinkCardComponent logo={brands.tiktok} />
+          <LinkCardComponent logo={brands.whatsapp} />
         </View>
         <View style={styles.footer}>
           <Text style={styles.footertext}>

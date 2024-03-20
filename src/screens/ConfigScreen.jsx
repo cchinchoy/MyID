@@ -28,6 +28,15 @@ const ConfigScreen = () => {
       Keyboard.dismiss();
     }
   };
+
+  const remove = async () => {
+    try {
+      await AsyncStorage.removeItem("MyName");
+      setName(null);
+    } catch (error) {
+      Alert.alert(error);
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -44,6 +53,9 @@ const ConfigScreen = () => {
         />
         <TouchableOpacity style={styles.btn} onPress={() => save()}>
           <Text style={styles.btntext}>Save</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btn} onPress={() => remove()}>
+          <Text style={styles.btntext}>Remove</Text>
         </TouchableOpacity>
         <View style={styles.footer}>
           <Text style={styles.footertext}>

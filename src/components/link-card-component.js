@@ -1,13 +1,17 @@
-import { View, Text, Image } from "react-native";
+import { useState } from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "../utils/styles";
+import ShareQRCode from "../screens/ShareQRCode";
 
-import { brands } from "../components";
-const LinkCardComponent = ({ name, logo, link }) => {
+const LinkCardComponent = ({ logo, link }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <View style={styles.infocard}>
-      <Text style={styles.infolabel}>Button</Text>
-      <Image source={brands.youtube} style={styles.imagebutton} />
-      <View style={styles.spacer} />
+      <TouchableOpacity onPress={() => setShowModal(true)}>
+        <Image source={logo} style={styles.imagebutton} />
+      </TouchableOpacity>
+      <ShareQRCode showModal={showModal} setShowModal={setShowModal} />
     </View>
   );
 };

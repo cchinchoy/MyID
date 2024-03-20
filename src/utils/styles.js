@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 1,
     borderRadius: 15,
-    backgroundColor: "#000000c0",
     justifyContent: "center",
     alignSelf: "center",
     marginTop: 25,
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     borderRadius: 25,
-    backgroundColor: "#000000",
+    padding: 10,
 
     justifyContent: "center",
     alignItems: "center",
@@ -96,6 +95,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     margin: 15,
     borderRadius: 999,
+    backgroundColor: "transparent",
   },
   footer: {
     position: "absolute",
@@ -107,6 +107,29 @@ const styles = StyleSheet.create({
   },
   footertext: {
     fontWeight: "bold",
+  },
+  modalcenter: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalview: {
+    margin: 20,
+    width: 300,
+    backgroundColor: "#000000",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });
 

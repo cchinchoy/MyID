@@ -3,4 +3,8 @@ export const tab = {
     name: "Home",
     component: "Homescreen",
   },
+  config: {
+    name: "Config",
+    component: "ConfigScreen",
+  },
 };
