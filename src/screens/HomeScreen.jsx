@@ -5,9 +5,9 @@ import { ImageBackground, Text, SafeAreaView, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { brands } from "../components";
 import styles from "../utils/styles";
-// import LinkCardComponent from "../components/link-card-component";
-// import ProfilePic from "../components/ProfilePic";
+
 import { LinkCardComponent, ProfilePic } from "../components";
+import ButtonScreen from "./ButtonScreen";
 const background = {
   uri: "https://images.pexels.com/photos/3873913/pexels-photo-3873913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 };
@@ -45,17 +45,10 @@ const HomeScreen = () => {
         </View>
         <View style={styles.spacer} />
         <View style={styles.btncontainer}>
-          <LinkCardComponent logo={brands.youtube} />
-          <LinkCardComponent logo={brands.linkedin} />
-          <LinkCardComponent logo={brands.facebook} />
-          <LinkCardComponent logo={brands.twitter} />
-          <LinkCardComponent logo={brands.tiktok} />
-          <LinkCardComponent logo={brands.whatsapp} />
+          <ButtonScreen />
         </View>
         <View style={styles.footer}>
-          <Text style={styles.footertext}>
-            Designed and developed by Colin B. Chin Choy
-          </Text>
+          <Text style={styles.footertext}>Develop/Disrupt/Destroy</Text>
         </View>
       </ImageBackground>
       <StatusBar style="auto" />

@@ -4,8 +4,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  btncontainer: {
+    position: "absolute",
+    top: Platform.OS === "android" ? 250 : 150,
+    justifyContent: "space-around",
+    flexDirection: "row",
+    height: 400,
+    width: "100%",
+    flexWrap: "wrap",
+    paddingVertical: 50,
+    marginTop: 50,
+    marginBottom: 100,
+  },
   btn: {
-    width: "75%",
+    width: 100,
+    alignItems: "center",
     height: 50,
     borderWidth: 1,
     borderRadius: 15,
@@ -55,7 +68,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderWidth: 1,
     borderRadius: 15,
-    height: 50,
+    height: 45,
     width: "75%",
     backgroundColor: "#ffffffc0",
   },
@@ -77,18 +90,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
 
-  btncontainer: {
-    position: "absolute",
-    top: Platform.OS === "android" ? 250 : 150,
-    justifyContent: "space-around",
-    flexDirection: "row",
-    height: 400,
-    width: "100%",
-    flexWrap: "wrap",
-    paddingVertical: 50,
-    marginTop: 50,
-    marginBottom: 100,
-  },
   imagebutton: {
     height: "100%",
     aspectRatio: 1,
@@ -99,6 +100,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: "absolute",
+    left: 0,
+    right: 0,
     bottom: 50,
     justifyContent: "center",
     alignItems: "center",
@@ -107,6 +110,7 @@ const styles = StyleSheet.create({
   },
   footertext: {
     fontWeight: "bold",
+    textAlign: "center",
   },
   modalcenter: {
     flex: 1,
@@ -130,6 +134,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  rowcontainer: {
+    flexDirection: "row",
+    alignSelf: "center",
+  },
+  editlititemcontainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 8,
+  },
+  editlistinput: {
+    flex: 1,
+    marginRight: 8,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 8,
   },
 });
 

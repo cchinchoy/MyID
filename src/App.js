@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import HomeScreen from "../src/screens/HomeScreen";
 import ConfigScreen from "./screens/ConfigScreen";
 
-const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
@@ -18,8 +17,9 @@ export default function App() {
   useEffect(() => {
     const getRoute = async () => {
       try {
-        let profileName = await AsyncStorage.getItem("MyName");
-        let routeName = profileName ? "Home" : "Config";
+        let stored = await AsyncStorage.getItem("@MyId");
+        console.log(stored);
+        let routeName = stored ? "Home" : "Config";
         setInitialRoute(routeName);
       } catch (error) {
         alert(err);
