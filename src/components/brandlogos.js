@@ -6,7 +6,7 @@ import twitter from "../../assets/x.png";
 import youtube from "../../assets/youtube.png";
 import blank from "../../assets/blank.png";
 
-const brands = {
+export const Brands = {
   linkedin: linkedin,
   facebook: facebook,
   tiktok: tiktok,
@@ -15,5 +15,3 @@ const brands = {
   youtube: youtube,
   blank: blank,
 };
-
-export default brands;

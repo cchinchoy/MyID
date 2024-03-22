@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Image, View } from "react-native";
 import styles from "../utils/styles";
-const ProfilePic = () => {
+
+export const ProfilePic = () => {
   const [pic, setPic] = useState();
   const image = "";
 
@@ -14,4 +15,3 @@ const ProfilePic = () => {
     </View>
   );
 };
-export default ProfilePic;

@@ -1,6 +1,16 @@
-import background from "./background";
-import ProfilePic from "./ProfilePic";
+import { background } from "./background";
+import { ProfilePic } from "./ProfilePic";
 import LinkCardComponent from "./link-card-component";
-import brands from "./brandlogos";
+import { Brands } from "./brandlogos";
 import GenerateQRCode from "./generate-qrcode-component";
-export { background, ProfilePic, LinkCardComponent, brands, GenerateQRCode };
+import { Footer } from "./Footer";
+import { Defaults } from "./Defaults";
+export {
+  background,
+  ProfilePic,
+  LinkCardComponent,
+  Brands,
+  GenerateQRCode,
+  Footer,
+  Defaults,
+};

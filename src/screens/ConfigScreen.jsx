@@ -13,10 +13,10 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import styles from "../utils/styles";
-import background from "../components/background";
-import ProfilePic from "../components/ProfilePic";
-import EditableList from "../components/EditableList";
+
+import { background, ProfilePic, Footer } from "../components";
 import Defaults from "../components/Defaults";
+// import  from "../components/Footer";
 const ConfigScreen = () => {
   const [name, setName] = useState();
   useEffect(() => {
@@ -31,8 +31,12 @@ const ConfigScreen = () => {
 
   const save = async () => {
     try {
-      await AsyncStorage.setItem("@MyId", name);
-      setName("");
+      let currentData = await AsyncStorage.getItem("@MyId");
+      let cdata = JSON.parse(currentData);
+      cdata.name = name;
+      console.log(cdata);
+      // await AsyncStorage.setItem("@MyId", JSON.stringify(cdata));
+      // setName("");
     } catch (error) {
       Alert.alert(error);
     } finally {
@@ -70,11 +74,7 @@ const ConfigScreen = () => {
             <Text style={styles.btntext}>Remove</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.footer}>
-          <Text style={styles.footertext}>
-            Designed and developed by Colin B. Chin Choy
-          </Text>
-        </View>
+        <Footer />
       </ImageBackground>
       <StatusBar style="auto" />
     </SafeAreaView>
