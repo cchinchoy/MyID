@@ -1,79 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  TextInput,
-  ImageBackground,
-  SafeAreaView,
-  Text,
-  View,
-  Alert,
-  TouchableOpacity,
-  Keyboard,
-} from "react-native";
+import { ImageBackground, SafeAreaView, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { useIsFocused } from "@react-navigation/native";
 import styles from "../utils/styles";
+import {
+  Background,
+  ProfilePic,
+  Footer,
+  NewName,
+  Defaults,
+} from "../components";
+import EditableList from "../components/EditableList";
 
-import { background, ProfilePic, Footer } from "../components";
-import Defaults from "../components/Defaults";
-// import  from "../components/Footer";
 const ConfigScreen = () => {
-  const [name, setName] = useState();
+  const isFocused = useIsFocused();
   useEffect(() => {
     const loadData = async () => {
       const storedData = await AsyncStorage.getItem("@MyId");
-      if (!storedData) {
+      console.log(storedData);
+      if (storedData === null) {
         Defaults();
       }
     };
     loadData();
-  }, []);
+  }, [isFocused]);
 
-  const save = async () => {
-    try {
-      let currentData = await AsyncStorage.getItem("@MyId");
-      let cdata = JSON.parse(currentData);
-      cdata.name = name;
-      console.log(cdata);
-      // await AsyncStorage.setItem("@MyId", JSON.stringify(cdata));
-      // setName("");
-    } catch (error) {
-      Alert.alert(error);
-    } finally {
-      Keyboard.dismiss();
-    }
-  };
-
-  const remove = async () => {
-    try {
-      await AsyncStorage.removeItem("@MyId");
-      setName(null);
-    } catch (error) {
-      Alert.alert(error);
-    }
-  };
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={background}
+        source={Background}
         resizeMode="cover"
         style={styles.image}
       >
         <ProfilePic />
-        <TextInput
-          value={name}
-          style={styles.input}
-          placeholder="Enter your Name"
-          onChangeText={(text) => setName(text)}
-        />
-        <View style={styles.rowcontainer}>
-          <TouchableOpacity style={styles.btn} onPress={() => save()}>
-            <Text style={styles.btntext}>Save</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btn} onPress={() => remove()}>
-            <Text style={styles.btntext}>Remove</Text>
-          </TouchableOpacity>
+        <View style={styles.edittitlecontainer}>
+          <NewName />
         </View>
+
+        <EditableList />
+
         <Footer />
       </ImageBackground>
       <StatusBar style="auto" />

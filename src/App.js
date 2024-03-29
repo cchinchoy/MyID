@@ -28,7 +28,7 @@ export default function App() {
     };
     getRoute();
   }, []);
-  console.log("My initialroute is ", initialRoute);
+
   if (initialRoute === null) {
     return null;
   }

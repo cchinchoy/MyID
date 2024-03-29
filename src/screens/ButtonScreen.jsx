@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from "@react-navigation/native";
+
 import LinkCardComponent from "../components/link-card-component"; // Adjust the import path as necessary
 
 const ButtonScreen = () => {
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,9 +16,10 @@ const ButtonScreen = () => {
       const filteredBrands = data.brandItems.filter((item) => item.selected);
       setSelectedBrands(filteredBrands);
     };
-
-    fetchData();
-  }, []);
+    if (isFocused) {
+      fetchData();
+    }
+  }, [isFocused]);
 
   // Render function for each item
   const renderItem = ({ item }) => (

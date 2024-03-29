@@ -5,7 +5,13 @@ import { ImageBackground, Text, SafeAreaView, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import styles from "../utils/styles";
-import { ProfilePic, background, Footer } from "../components";
+import {
+  ProfilePic,
+  Background,
+  Footer,
+  Spacer,
+  Defaults,
+} from "../components";
 import ButtonScreen from "./ButtonScreen";
 
 const HomeScreen = () => {
@@ -15,11 +21,12 @@ const HomeScreen = () => {
   const getUserData = async () => {
     try {
       let data = await AsyncStorage.getItem("@MyId");
-      newdata = JSON.parse(data);
-
-      console.log(newdata.name);
-      if (newdata.name !== null) {
-        setName(newdata.name);
+      console.log(data);
+      if (!data) {
+        Defaults();
+      } else {
+        cdata = JSON.parse(data);
+        setName(cdata.name);
       }
     } catch (error) {
       alert(error);
@@ -34,16 +41,16 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={background}
+        source={Background}
         resizeMode="cover"
         style={styles.image}
       >
         <ProfilePic />
-        <View style={styles.spacer} />
+        <Spacer />
         <View style={styles.titlecontainer}>
           <Text style={styles.text}>{name}</Text>
         </View>
-        <View style={styles.spacer} />
+        <Spacer />
         <View style={styles.btncontainer}>
           <ButtonScreen />
         </View>

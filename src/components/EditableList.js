@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { View, TextInput, Button, FlatList } from "react-native";
-import { CheckBox } from "@react-native-community/checkbox";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../utils/styles";
-
+import { CustomCheckBox } from "./CustomCheckBox";
 const EditableList = () => {
   const [data, setData] = useState({
     name: "",
@@ -11,7 +11,7 @@ const EditableList = () => {
     brandItems: [],
     backgroundImages: [],
   });
-
+  const [select, setSelect] = useState();
   // Load data from AsyncStorage
   useEffect(() => {
     const loadData = async () => {
@@ -24,6 +24,7 @@ const EditableList = () => {
 
   // Save data to AsyncStorage
   const saveData = async (newData) => {
+    console.log(newData);
     await AsyncStorage.setItem("@MyId", JSON.stringify(newData));
     setData(newData);
   };
@@ -46,6 +47,7 @@ const EditableList = () => {
   const handleEditBrandItem = (index, field, value) => {
     const newData = { ...data };
     newData.brandItems[index][field] = value;
+    console.log(newData);
     saveData(newData);
   };
 
@@ -53,41 +55,39 @@ const EditableList = () => {
   const toggleBrandItemSelection = (index) => {
     const newData = { ...data };
     newData.brandItems[index].selected = !newData.brandItems[index].selected;
+    console.log(newData);
     saveData(newData);
   };
-
+  const RenderItem = ({ item, index }) => (
+    <View style={styles.flatlistcontainer}>
+      {console.log(item)}
+      <TextInput
+        style={styles.editlistinput}
+        onChangeText={(text) => handleEditBrandItem(index, "brandUrl", text)}
+        value={item.brandUrl}
+        placeholder="URL to encode"
+      />
+      <TextInput
+        style={styles.editlistinput}
+        onChangeText={(text) => handleEditBrandItem(index, "logo", text)}
+        value={item.logo}
+        placeholder="Logo"
+      />
+      {console.log(item.selected)}
+      <CustomCheckBox
+        selected={item.selected}
+        onPress={() => toggleBrandItemSelection(index)}
+      />
+      <Button title="Delete" onPress={() => handleDeleteBrandItem(index)} />
+    </View>
+  );
   return (
-    <View>
+    <View style={styles.editcontainer}>
       <Button title="Add Brand Item" onPress={handleAddBrandItem} />
       <FlatList
         data={data.brandItems}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item, index }) => (
-          <View style={styles.editlititemcontainer}>
-            <TextInput
-              style={styles.input}
-              onChangeText={(text) =>
-                handleEditBrandItem(index, "brandUrl", text)
-              }
-              value={item.brandUrl}
-              placeholder="Brand URL"
-            />
-            <TextInput
-              style={styles.editlistinput}
-              onChangeText={(text) => handleEditBrandItem(index, "logo", text)}
-              value={item.logo}
-              placeholder="Logo"
-            />
-            <CheckBox
-              value={item.selected}
-              onValueChange={() => toggleBrandItemSelection(index)}
-            />
-            <Button
-              title="Delete"
-              onPress={() => handleDeleteBrandItem(index)}
-            />
-          </View>
-        )}
+        renderItem={RenderItem}
       />
     </View>
   );

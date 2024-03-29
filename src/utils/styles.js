@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from "react-native";
-
+import { appColors } from "./Colors";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     marginTop: 25,
+    backgroundColor: appColors.success,
   },
   btntext: {
     color: "#ffffff",
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderWidth: 1,
     borderRadius: 15,
-    height: 45,
+    height: 50,
     width: "75%",
     backgroundColor: "#ffffffc0",
   },
@@ -138,9 +139,12 @@ const styles = StyleSheet.create({
   rowcontainer: {
     flexDirection: "row",
     alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
   },
   editlititemcontainer: {
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
     marginVertical: 8,
   },
@@ -150,6 +154,42 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     padding: 8,
+  },
+  custcheckboxslcted: {
+    width: 25,
+    height: 25,
+    borderWidth: 1,
+    borderRadius: 5,
+    backgroundColor: "red",
+  },
+  custcheckboxunslcted: {
+    width: 25,
+    height: 25,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  edittitlecontainer: {
+    position: "absolute",
+    top: 120,
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+    height: 300,
+    left: 25,
+    right: 25,
+    flexWrap: "wrap",
+    paddingVertical: 30,
+    marginTop: 50,
+    marginBottom: 100,
+  },
+  editcontainer: {
+    position: "absolute",
+    top: 275,
+    height: 290,
+    left: 10,
+    right: 10,
+  },
+  flatlistcontainer: {
+    flexDirection: "row",
   },
 });
 
